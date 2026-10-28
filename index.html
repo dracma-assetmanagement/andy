@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Andrés Agustín Gorgerino — Abogado corporativo y financiero en Córdoba</title>
+<meta name="description" content="Estudio jurídico en Córdoba, Argentina. Asesoramiento legal a empresas, inversores y proyectos: societario, M&A, mercado de capitales, venture capital, empresas familiares y litigios.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAFAFB;
+    --card-bg: #FFFFFF;
+    --text: #111B2B;
+    --muted: #4B5E73;
+    --line: #E2E8F0;
+    --line-strong: #CBD5E1;
+    --navy: #0F172A;       /* Botón principal y acentos */
+    --navy-hover: #1E293B;
+    --accent: #1E3A8A;     /* Detalle de prestigio (azul corporativo profundo) */
+    --wa: #25D366;
+    --serif: "Source Serif 4", "Georgia", "Times New Roman", serif;
+    --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --max: 1200px;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  html { scroll-padding-top: 90px; scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: inherit; }
+  
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 16px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  
+  a { color: inherit; text-decoration: none; transition: color .2s ease; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  img { max-width: 100%; display: block; object-fit: cover; }
+  
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; letter-spacing: -0.01em; color: var(--navy); }
+  p { margin: 0; }
+
+  /* ---------- Barra Superior de Navegación ---------- */
+  .top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 100;
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line); transition: background .3s;
+  }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 110; background: #fff; }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 24px; }
+  
+  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; white-space: nowrap; line-height: 1.1; letter-spacing: -0.5px; }
+  .brand small { display: block; font-family: var(--sans); font-size: 11.5px; color: var(--muted); font-weight: 400; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  
+  .nav { display: flex; gap: 32px; }
+  .nav a { font-size: 14px; font-weight: 500; color: var(--muted); padding: 8px 0; border-bottom: 2px solid transparent; }
+  .nav a:hover, .nav a.active { color: var(--navy); border-bottom-color: var(--accent); }
+
+  /* Botones Modernos */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 26px; border-radius: 6px; font-weight: 600; font-size: 14.5px;
+    background: var(--navy); color: #fff; white-space: nowrap; border: 1px solid var(--navy);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn:hover { background: var(--navy-hover); border-color: var(--navy-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15); }
+  .btn.outline { background: transparent; color: var(--navy); border-color: var(--line-strong); box-shadow: none; }
+  .btn.outline:hover { border-color: var(--navy); background: rgba(15, 23, 42, 0.02); }
+  .btn.wa { background: var(--wa); border-color: var(--wa); color: #ffffff; text-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+  .btn.wa:hover { background: #20BA5A; border-color: #20BA5A; box-shadow: 0 6px 18px rgba(37, 211, 102, 0.25); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* ---------- Hero Section ---------- */
+  .hero { padding: 120px 0 96px; position: relative; background: radial-gradient(circle at top right, rgba(30, 58, 138, 0.03), transparent 45%); }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 80px; align-items: center; }
+  .hero .kicker { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(42px, 5vw, 64px); line-height: 1.12; font-weight: 500; }
+  .hero p.lead { font-size: 18px; color: var(--muted); max-width: 48ch; margin-top: 24px; font-weight: 300; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+  
+  .hero-photo-container { position: relative; width: 100%; display: flex; justify-content: center; }
+  .hero-photo {
+    aspect-ratio: 4 / 5; border-radius: 12px; max-height: 580px; width: 100%;
+    background: #EDEDED url("retrato.jpg") center/cover no-repeat;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.04);
+  }
+  .hero-photo-container::after {
+    content: ""; position: absolute; -z-index: 1; inset: -10px -10px auto auto;
+    width: 140px; height: 140px; border-top: 2px solid var(--line-strong); border-right: 2px solid var(--line-strong);
+    border-radius: 0 12px 0 0; pointer-events: none;
+  }
+
+  /* ---------- Datos / Metas ---------- */
+  .facts { background: var(--card-bg); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
+  .facts .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .facts div { padding: 40px 48px; border-right: 1px solid var(--line); position: relative; }
+  .facts div:first-child { padding-left: 0; }
+  .facts div:last-child { border-right: 0; padding-right: 0; }
+  .facts strong { font-family: var(--serif); font-size: 34px; font-weight: 500; display: block; color: var(--accent); line-height: 1; }
+  .facts span { color: var(--muted); font-size: 15px; display: block; margin-top: 10px; font-weight: 400; line-height: 1.5; }
+
+  /* ---------- Intercepción Visual (Córdoba aérea) ---------- */
+  .divider-img {
+    height: 380px; width: 100%; overflow: hidden; position: relative;
+    background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.4)), 
+                url("https://images.unsplash.com/photo-1590483736622-39da8af75bba?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+    background-attachment: fixed;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .divider-text { color: #fff; text-align: center; font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); padding: 0 20px; font-weight: 400; max-width: 800px; text-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+
+  /* ---------- Secciones de Contenido ---------- */
+  section.block { padding: 120px 0; position: relative; }
+  section.block + section.block { border-top: 1px solid var(--line); }
+  
+  .head { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 80px; margin-bottom: 72px; align-items: flex-end; }
+  .head h2 { font-size: clamp(34px, 4.2vw, 46px); font-weight: 500; line-height: 1.15; position: relative; }
+  .head h2::after { content: ""; display: block; width: 48px; height: 3px; background: var(--accent); margin-top: 20px; border-radius: 2px; }
+  .head p { color: var(--muted); font-size: 18px; font-weight: 300; }
+
+  /* Áreas de práctica: Tarjetas Premium */
+  .areas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .areas li {
+    background: var(--card-bg); border: 1px solid var(--line); border-radius: 8px; padding: 40px 36px;
+    display: flex; flex-direction: column; min-height: 250px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01), 0 2px 4px -1px rgba(0,0,0,0.01);
+    transition: all .35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .areas li:hover { 
+    border-color: var(--line-strong); 
+    box-shadow: 0 20px 25px -5px rgba(15,23,42,0.06), 0 10px 10px -5px rgba(15,23,42,0.02); 
+    transform: translateY(-4px); 
+  }
+  .areas h3 { font-size: 22px; font-weight: 500; line-height: 1.3; }
+  .areas p { margin-top: 16px; color: var(--muted); font-size: 15px; line-height: 1.6; flex: 1; font-weight: 300; }
+
+  /* Cómo trabajo */
+  .how { display: grid; grid-template-columns: repeat(2, 1fr); gap: 64px; }
+  .how article { border-top: 3px solid var(--navy); padding-top: 28px; position: relative; }
+  .how article::before { content: "0" + attr(data-step); position: absolute; top: -14px; right: 0; font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 1px; }
+  .how h3 { font-size: 22px; font-weight: 500; }
+  .how p { margin-top: 14px; color: var(--muted); font-size: 15px; font-weight: 300; }
+
+  /* ---------- Intercepción Visual (Tratos corporativos) ---------- */
+  .divider-img-2 {
+    height: 380px; width: 100%; overflow: hidden; position: relative;
+    background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.45)), 
+                url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+    background-attachment: fixed;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Sobre */
+  .about { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+  .about h2 { font-size: clamp(34px, 4.2vw, 46px); font-weight: 500; line-height: 1.15; }
+  .about h2::after { content: ""; display: block; width: 48px; height: 3px; background: var(--accent); margin-top: 20px; border-radius: 2px; }
+  .about .text p { margin-bottom: 24px; font-size: 17px; max-width: 62ch; font-weight: 300; }
+  .about .text p:last-child { margin-bottom: 0; }
+  .about .text p.signature { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--navy); }
+  .about .signature small { display: block; font-family: var(--sans); font-size: 12px; font-weight: 400; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+  .about .quote { font-family: var(--serif); font-size: 24px; font-style: italic; font-weight: 300; line-height: 1.5; margin-top: 36px; color: var(--accent); }
+
+  /* Contacto */
+  .contact { padding: 120px 0; background: #9CA0A9; color: var(--navy); border-top: 0; }
+  .contact h2 { color: var(--navy); font-size: clamp(34px, 4.5vw, 52px); font-weight: 400; line-height: 1.15; }
+  .contact p { color: #1E293B; font-size: 18px; max-width: 48ch; margin-top: 24px; font-weight: 300; }
+  .contact .wrap { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center; }
+  
+  .contact .card { background: #FFFFFF; border: 1px solid rgba(15,23,42,0.08); border-radius: 12px; padding: 48px 40px; box-shadow: 0 20px 40px -15px rgba(15,23,42,0.25); }
+  .contact .card dl { margin: 0; }
+  .contact .card dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 24px; font-weight: 600; }
+  .contact .card dt:first-child { margin-top: 0; }
+  .contact .card dd { margin: 6px 0 0; font-size: 18px; font-weight: 400; }
+  .contact .card dd a { color: var(--navy); border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; transition: border-color .2s; }
+  .contact .card dd a:hover { border-color: var(--navy); }
+  .contact .card .btn { margin-top: 36px; width: 100%; }
+
+  footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; padding: 36px 0; background: var(--bg); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-weight: 500; }
+
+  /* Botón Flotante WhatsApp */
+  .wa-float {
+    position: fixed; right: 28px; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); z-index: 100;
+    display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%;
+    background: var(--wa); color: #fff;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+    transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .wa-float:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 12px 35px rgba(37, 211, 102, 0.45); }
+  .wa-float svg { width: 30px; height: 30px; }
+
+  /* ---------- EFECTOS REVEAL AL BAJAR (PRESTIGIO) ---------- */
+  .reveal { opacity: 0; transform: translateY(35px); transition: opacity .9s cubic-bezier(0.16, 1, 0.3, 1), transform .9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 992px) {
+    .nav { display: none; }
+    .hero .wrap, .head, .about, .contact .wrap { grid-template-columns: 1fr; gap: 48px; }
+    .hero { padding: 64px 0 64px; }
+    .hero-photo-container { order: -1; max-width: 500px; margin: 0 auto; }
+    .facts .wrap { grid-template-columns: 1fr; }
+    .facts div { border-right: 0; border-bottom: 1px solid var(--line); padding: 32px 0; }
+    .facts div:first-child { padding-top: 0; }
+    .facts div:last-child { border-bottom: 0; padding-bottom: 0; }
+    .areas, .how { grid-template-columns: 1fr 1fr; }
+    section.block, .contact { padding: 80px 0; }
+    .head { margin-bottom: 48px; gap: 24px; }
+  }
+  @media (max-width: 600px) {
+    .areas, .how { grid-template-columns: 1fr; }
+    .areas li { min-height: 0; padding: 32px 24px; }
+    .brand small { display: none; }
+    .wa-float { width: 54px; height: 54px; }
+    .wa-float svg { width: 27px; height: 27px; }
+    .contact .card { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Andrés A. Gorgerino<small>Abogado · Córdoba, Argentina</small></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#areas" class="nav-link">Áreas de práctica</a>
+      <a href="#enfoque" class="nav-link">Cómo trabajo</a>
+      <a href="#sobre" class="nav-link">El estudio</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="kicker">Estudio jurídico · Córdoba, Argentina</p>
+        <h1>Asesoramiento legal para empresas, inversores y proyectos.</h1>
+        <p class="lead">Acompañamos a compañías, fondos y familias empresarias en sus decisiones societarias, financieras y patrimoniales: desde la constitución y el financiamiento hasta la sucesión y la resolución de conflictos.</p>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/5493564604591?text=Hola%20Andr%C3%A9s%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Hacer una consulta</a>
+          <a class="btn outline" href="#areas">Ver áreas de práctica</a>
+        </div>
+      </div>
+      <div class="hero-photo-container reveal" style="transition-delay: 150ms;">
+        <div class="hero-photo" role="img" aria-label="Retrato profesional de Andrés Agustín Gorgerino en su oficina jurídica"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Datos y Cifras -->
+  <div class="facts">
+    <div class="wrap">
+      <div class="reveal"><strong>Foco financiero</strong><span>en mercado de capitales, financiamiento y estructuración de operaciones.</span></div>
+      <div class="reveal" style="transition-delay: 100ms;"><strong>Córdoba</strong><span>con sólida presencia regional y operaciones a nivel nacional.</span></div>
+      <div class="reveal" style="transition-delay: 200ms;"><strong>Trato directo</strong><span>Gestion personalizada de los temas.</span></div>
+    </div>
+  </div>
+
+  <!-- INTERCEPCIÓN VISUAL 1 -->
+  <div class="divider-img reveal">
+    <div class="divider-text">Ofreciendo soluciones legales con una perspectiva estratégica y de negocios en Córdoba.</div>
+  </div>
+
+  <section class="block" id="areas">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Áreas de práctica</h2>
+        <p>Trabajo en la intersección entre lo societario, lo financiero y lo patrimonial. Cada asunto se aborda con la estructura legal que mejor protege el negocio y a las personas detrás de él.</p>
+      </div>
+      <ul class="areas">
+        <li class="reveal"><h3>Estructuración y financiamiento de proyectos</h3><p>Diseño de la arquitectura legal y financiera de proyectos complejos, integrando contratos, garantías y financiamiento.</p></li>
+        <li class="reveal"><h3>Mercado de capitales</h3><p>Estructuración de emisiones, programas de deuda y financiamiento con oferta pública o privada.</p></li>
+        <li class="reveal"><h3>Fusiones y adquisiciones (M&amp;A)</h3><p>Asesoramiento en adquisiciones, desinversiones y reorganizaciones, desde la estructuración hasta el cierre.</p></li>
+        <li class="reveal"><h3>Corporativo general y societario</h3><p>Gestión societaria con foco en gobierno corporativo, acuerdos entre socios y soluciones legales pragmáticas.</p></li>
+        <li class="reveal"><h3>Bancario y financiero</h3><p>Préstamos, financiamientos estructurados y reestructuraciones, con documentación sólida y negociable.</p></li>
+        <li class="reveal"><h3>Venture capital y startups</h3><p>Acompañamiento a emprendedores e inversores desde la constitución inicial hasta rondas de financiamiento.</p></li>
+        <li class="reveal"><h3>Planeamiento sucesorio</h3><p>Estructuración de la transmisión del patrimonio con soluciones que previenen conflictos y aseguran continuidad.</p></li>
+        <li class="reveal"><h3>Compliance</h3><p>Diseño de programas de integridad e investigaciones internas que previenen riesgos y fortalecen la organización.</p></li>
+        <li class="reveal"><h3>Energía, recursos naturales, oil &amp; gas</h3><p>Asistencia en proyectos del sector combinando negociación contractual, soporte transaccional y análisis regulatorio.</p></li>
+        <li class="reveal"><h3>Asesoramiento integral para empresas familiares</h3><p>Gobierno, protocolos y planificación sucesoria para preservar el negocio y los vínculos familiares.</p></li>
+        <li class="reveal"><h3>Litigios y arbitrajes domésticos e internacionales</h3><p>Intervención en controversias judiciales y arbitrales de alto impacto, incluyendo disputas comerciales y societarias.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- INTERCEPCIÓN VISUAL 2 -->
+  <div class="divider-img-2 reveal"></div>
+
+  <section class="block" id="enfoque">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Cómo trabajo</h2>
+        <p>La suma de experiencia en distintas áreas permite ofrecer un asesoramiento más completo, cercano y efectivo.</p>
+      </div>
+      <div class="how">
+        <article class="reveal" data-step="1"><h3>Visión de negocio</h3><p>El objetivo es que la operación salga bien, no solo que el contrato esté bien escrito. Se trabaja con los números, los tiempos y los riesgos reales de cada decisión.</p></article>
+        <article class="reveal" style="transition-delay: 100ms;" data-step="2"><h3>Prevención antes que litigio</h3><p>Buena parte de los conflictos societarios y familiares se evitan con estructuras claras. Cuando el conflicto ya existe, se defiende con la misma rigurosidad.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sobre">
+    <div class="wrap about">
+      <div class="reveal">
+        <h2>El estudio</h2>
+        <p class="quote">“Soluciones legales pensadas para empresas que crecen, invierten y trascienden generaciones.”</p>
+      </div>
+      <div class="text reveal" style="transition-delay: 120ms;">
+        <p>Somos un estudio jurídico con sede en Córdoba, Argentina, dedicado al derecho corporativo, financiero y patrimonial. Brindamos asesoramiento a empresas, fondos de inversión, emprendedores y familias empresarias en operaciones societarias, financiamiento, mercado de capitales y planificación sucesoria.</p>
+        <p>Nuestra práctica integra el trabajo transaccional con la prevención y resolución de conflictos. Esta visión nos permite anticipar los aspectos críticos de cada operación y, cuando el litigio resulta inevitable, defender con solidez los intereses de nuestros clientes.</p>
+        <p>Asistimos a clientes en todo el país, de forma presencial y remota, e intervenimos en operaciones con contrapartes internacionales.</p>
+        <p class="signature">Andrés Agustín Gorgerino<small>Abogado · Fundador</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div class="reveal">
+        <h2>Contame tu caso y lo analizamos juntos.</h2>
+        <p>La primera conversación sirve para entender la situación y definir cómo encararla. Escribime por WhatsApp o por correo y te respondo a la brevedad.</p>
+      </div>
+      <div class="card reveal" style="transition-delay: 120ms;">
+        <dl>
+          <dt>WhatsApp</dt>
+          <dd><a href="https://wa.me/5493564604591" target="_blank" rel="noopener">+54 9 3564 60-4591</a></dd>
+          <dt>Correo electrónico</dt>
+          <dd><a href="mailto:contacto@ejemplo.com">contacto@ejemplo.com</a></dd>
+          <dt>Ubicación</dt>
+          <dd>Córdoba, Argentina</dd>
+        </dl>
+        <a class="btn wa" href="https://wa.me/5493564604591?text=Hola%20Andr%C3%A9s%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.5 1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.6-.5ZM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Zm8.4-18.2A11.8 11.8 0 0 0 1.5 17.9L0 24l6.3-1.6A11.8 11.8 0 1 0 20.4 3.6Z"/></svg>
+          Iniciar consulta por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Andrés Agustín Gorgerino · Abogado</span>
+    <span>Córdoba, Argentina</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5493564604591?text=Hola%20Andr%C3%A9s%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.5 1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.6-.5ZM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Zm8.4-18.2A11.8 11.8 0 0 0 1.5 17.9L0 24l6.3-1.6A11.8 11.8 0 1 0 20.4 3.6Z"/></svg>
+</a>
+
+<script>
+  // EFECTOS SUAVES AL BAJAR (Aparición gradual escalonada)
+  (function () {
+    const reveals = document.querySelectorAll('.reveal');
+    
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach(el => el.classList.add('in'));
+      return;
+    }
+
+    // Escalonamiento de tarjetas en áreas de práctica dinámico
+    document.querySelectorAll('.areas .reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i % 3) * 100 + 'ms';
+    });
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    };
+
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    reveals.forEach(el => io.observe(el));
+
+    // Indicador activo en barra de navegación según scroll
+    const sections = document.querySelectorAll('section, main');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
