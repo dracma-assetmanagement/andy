@@ -55,8 +55,8 @@
   body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 110; background: #fff; }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 24px; }
   
-  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; white-space: nowrap; line-height: 1.1; letter-spacing: -0.5px; }
-  .brand small { display: block; font-family: var(--sans); font-size: 11.5px; color: var(--muted); font-weight: 400; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; font-family: var(--serif); font-size: 22px; font-weight: 600; white-space: nowrap; line-height: 1; letter-spacing: 0.18em; color: var(--navy); }
+  .brand img { height: 40px; width: auto; object-fit: contain; }
   
   .nav { display: flex; gap: 32px; }
   .nav a { font-size: 14px; font-weight: 500; color: var(--muted); padding: 8px 0; border-bottom: 2px solid transparent; }
@@ -87,24 +87,38 @@
   
   .hero-photo-container { position: relative; width: 100%; display: flex; justify-content: center; }
   .hero-photo {
+    position: relative; overflow: hidden;
     aspect-ratio: 4 / 5; border-radius: 12px; max-height: 580px; width: 100%;
-    background: #EDEDED url("retrato.jpg") center/cover no-repeat;
+    background: #1E293B;
     box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.04);
+  }
+  /* Fotos en movimiento lento (zoom + desplazamiento) con fundido entre ellas */
+  .hero-photo .slide {
+    position: absolute; inset: 0; background-size: cover; background-position: center;
+    opacity: 0; transform: scale(1.04);
+    animation: heroFade 21s infinite, heroPan 21s infinite;
+    animation-timing-function: ease-in-out, linear;
+  }
+  .hero-photo .slide:nth-child(1) { background-image: url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80"); animation-delay: 0s; }
+  .hero-photo .slide:nth-child(2) { background-image: url("https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1000&q=80"); animation-delay: 7s; }
+  .hero-photo .slide:nth-child(3) { background-image: url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=80"); animation-delay: 14s; }
+  .hero-photo::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, transparent 55%, rgba(15, 23, 42, 0.25));
+  }
+  @keyframes heroFade {
+    0% { opacity: 0; } 6% { opacity: 1; } 33% { opacity: 1; } 40% { opacity: 0; } 100% { opacity: 0; }
+  }
+  @keyframes heroPan {
+    0% { transform: scale(1.04) translate(0, 0); }
+    40% { transform: scale(1.16) translate(-2%, -1.5%); }
+    100% { transform: scale(1.16) translate(-2%, -1.5%); }
   }
   .hero-photo-container::after {
     content: ""; position: absolute; -z-index: 1; inset: -10px -10px auto auto;
     width: 140px; height: 140px; border-top: 2px solid var(--line-strong); border-right: 2px solid var(--line-strong);
     border-radius: 0 12px 0 0; pointer-events: none;
   }
-
-  /* ---------- Datos / Metas ---------- */
-  .facts { background: var(--card-bg); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
-  .facts .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .facts div { padding: 40px 48px; border-right: 1px solid var(--line); position: relative; }
-  .facts div:first-child { padding-left: 0; }
-  .facts div:last-child { border-right: 0; padding-right: 0; }
-  .facts strong { font-family: var(--serif); font-size: 34px; font-weight: 500; display: block; color: var(--accent); line-height: 1; }
-  .facts span { color: var(--muted); font-size: 15px; display: block; margin-top: 10px; font-weight: 400; line-height: 1.5; }
 
   /* ---------- Intercepción Visual (Córdoba aérea) ---------- */
   .divider-img {
@@ -140,13 +154,6 @@
   }
   .areas h3 { font-size: 22px; font-weight: 500; line-height: 1.3; }
   .areas p { margin-top: 16px; color: var(--muted); font-size: 15px; line-height: 1.6; flex: 1; font-weight: 300; }
-
-  /* Cómo trabajo */
-  .how { display: grid; grid-template-columns: repeat(2, 1fr); gap: 64px; }
-  .how article { border-top: 3px solid var(--navy); padding-top: 28px; position: relative; }
-  .how article::before { content: "0" + attr(data-step); position: absolute; top: -14px; right: 0; font-family: var(--sans); font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 1px; }
-  .how h3 { font-size: 22px; font-weight: 500; }
-  .how p { margin-top: 14px; color: var(--muted); font-size: 15px; font-weight: 300; }
 
   /* ---------- Intercepción Visual (Tratos corporativos) ---------- */
   .divider-img-2 {
@@ -203,6 +210,8 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hero-photo .slide { animation: none; transform: none; }
+    .hero-photo .slide:first-child { opacity: 1; }
   }
 
   /* ---------- Responsive ---------- */
@@ -211,18 +220,13 @@
     .hero .wrap, .head, .about, .contact .wrap { grid-template-columns: 1fr; gap: 48px; }
     .hero { padding: 64px 0 64px; }
     .hero-photo-container { order: -1; max-width: 500px; margin: 0 auto; }
-    .facts .wrap { grid-template-columns: 1fr; }
-    .facts div { border-right: 0; border-bottom: 1px solid var(--line); padding: 32px 0; }
-    .facts div:first-child { padding-top: 0; }
-    .facts div:last-child { border-bottom: 0; padding-bottom: 0; }
-    .areas, .how { grid-template-columns: 1fr 1fr; }
+    .areas { grid-template-columns: 1fr 1fr; }
     section.block, .contact { padding: 80px 0; }
     .head { margin-bottom: 48px; gap: 24px; }
   }
   @media (max-width: 600px) {
-    .areas, .how { grid-template-columns: 1fr; }
+    .areas { grid-template-columns: 1fr; }
     .areas li { min-height: 0; padding: 32px 24px; }
-    .brand small { display: none; }
     .wa-float { width: 54px; height: 54px; }
     .wa-float svg { width: 27px; height: 27px; }
     .contact .card { padding: 32px 24px; }
@@ -233,10 +237,13 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio">Andrés A. Gorgerino<small>Abogado · Córdoba, Argentina</small></a>
+    <a class="brand" href="#inicio" aria-label="Gorgerino — inicio">
+      <!-- Logo: cuando llegue el archivo, descomentar y ajustar la ruta -->
+      <!-- <img src="logo.png" alt=""> -->
+      GORGERINO
+    </a>
     <nav class="nav" aria-label="Secciones">
       <a href="#areas" class="nav-link">Áreas de práctica</a>
-      <a href="#enfoque" class="nav-link">Cómo trabajo</a>
       <a href="#sobre" class="nav-link">El estudio</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
@@ -257,19 +264,13 @@
         </div>
       </div>
       <div class="hero-photo-container reveal" style="transition-delay: 150ms;">
-        <div class="hero-photo" role="img" aria-label="Retrato profesional de Andrés Agustín Gorgerino en su oficina jurídica"></div>
+        <div class="hero-photo" role="img" aria-label="Escenas de trabajo jurídico: firma de documentos y asesoramiento profesional">
+          <div class="slide"></div><div class="slide"></div><div class="slide"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Datos y Cifras -->
-  <div class="facts">
-    <div class="wrap">
-      <div class="reveal"><strong>Foco financiero</strong><span>en mercado de capitales, financiamiento y estructuración de operaciones.</span></div>
-      <div class="reveal" style="transition-delay: 100ms;"><strong>Córdoba</strong><span>con sólida presencia regional y operaciones a nivel nacional.</span></div>
-      <div class="reveal" style="transition-delay: 200ms;"><strong>Trato directo</strong><span>Gestion personalizada de los temas.</span></div>
-    </div>
-  </div>
 
   <!-- INTERCEPCIÓN VISUAL 1 -->
   <div class="divider-img reveal">
@@ -301,18 +302,6 @@
   <!-- INTERCEPCIÓN VISUAL 2 -->
   <div class="divider-img-2 reveal"></div>
 
-  <section class="block" id="enfoque">
-    <div class="wrap">
-      <div class="head reveal">
-        <h2>Cómo trabajo</h2>
-        <p>La suma de experiencia en distintas áreas permite ofrecer un asesoramiento más completo, cercano y efectivo.</p>
-      </div>
-      <div class="how">
-        <article class="reveal" data-step="1"><h3>Visión de negocio</h3><p>El objetivo es que la operación salga bien, no solo que el contrato esté bien escrito. Se trabaja con los números, los tiempos y los riesgos reales de cada decisión.</p></article>
-        <article class="reveal" style="transition-delay: 100ms;" data-step="2"><h3>Prevención antes que litigio</h3><p>Buena parte de los conflictos societarios y familiares se evitan con estructuras claras. Cuando el conflicto ya existe, se defiende con la misma rigurosidad.</p></article>
-      </div>
-    </div>
-  </section>
 
   <section class="block" id="sobre">
     <div class="wrap about">
